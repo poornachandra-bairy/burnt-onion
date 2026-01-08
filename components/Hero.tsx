@@ -13,6 +13,20 @@ const Hero = () => {
     const onionRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
 
+    const [embers, setEmbers] = React.useState<any[]>([]);
+
+    useEffect(() => {
+        setEmbers(Array(20).fill(0).map(() => ({
+            opacity: Math.random() * 0.5 + 0.2,
+            x: Math.random() * 100 + "%",
+            y: "110%",
+            scale: Math.random() * 0.5 + 0.5,
+            xAnimate: (Math.random() - 0.5) * 20 + 50 + "%",
+            duration: Math.random() * 5 + 5,
+            delay: Math.random() * 5,
+        })));
+    }, []);
+
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
 
@@ -103,24 +117,24 @@ const Hero = () => {
                 <div className="h-full w-full bg-[url('https://res.cloudinary.com/dzvxsf8pk/image/upload/v1688220000/smoke_v2.png')] bg-cover bg-center animate-pulse" />
                 {/* Animated Embers (CSS Animation) */}
                 <div className="absolute inset-0 overflow-hidden">
-                    {[...Array(20)].map((_, i) => (
+                    {embers.map((ember, i) => (
                         <motion.div
                             key={i}
                             initial={{
-                                opacity: Math.random() * 0.5 + 0.2,
-                                x: Math.random() * 100 + "%",
-                                y: "110%",
-                                scale: Math.random() * 0.5 + 0.5,
+                                opacity: ember.opacity,
+                                x: ember.x,
+                                y: ember.y,
+                                scale: ember.scale,
                             }}
                             animate={{
                                 y: "-10%",
-                                x: (Math.random() - 0.5) * 20 + 50 + "%",
+                                x: ember.xAnimate,
                                 opacity: [0, 0.8, 0],
                             }}
                             transition={{
-                                duration: Math.random() * 5 + 5,
+                                duration: ember.duration,
                                 repeat: Infinity,
-                                delay: Math.random() * 5,
+                                delay: ember.delay,
                                 ease: "linear",
                             }}
                             className="absolute h-1 w-1 rounded-full bg-orange-500 blur-[1px] shadow-[0_0_10px_orange]"
