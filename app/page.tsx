@@ -73,7 +73,17 @@ export default function Home() {
           </div>
 
           <div className="mt-20 flex flex-col items-center justify-between border-t border-white/10 pt-12 md:flex-row">
-            <p className="text-xs text-muted-foreground">© 2024 BURNT ONION. ALL RIGHTS RESERVED.</p>
+            <div className="flex flex-col gap-2">
+              <p className="text-xs text-muted-foreground">© 2024 BURNT ONION. ALL RIGHTS RESERVED.</p>
+              <a
+                href="https://aghoralabs.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[10px] font-bold tracking-widest text-muted-foreground/60 hover:text-primary transition-colors uppercase"
+              >
+                Designed & Developed by AghoraLabs
+              </a>
+            </div>
             <div className="mt-6 flex gap-8 text-xs font-bold md:mt-0">
               <a href="#" className="hover:text-primary transition-colors">INSTAGRAM</a>
               <a href="#" className="hover:text-primary transition-colors">FACEBOOK</a>
