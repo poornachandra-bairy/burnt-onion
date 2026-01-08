@@ -139,3 +139,8 @@ p {
 .perspective-1000 {
   perspective: 1000px;
 }
+
+/* Fix for italic fonts clipping */
+.italic {
+  padding-right: 0.2em;
+}
